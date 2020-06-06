@@ -10,6 +10,7 @@ print("="*45)
 print("OPTIONS..........................COMMANDS")
 print("~"*45)
 print("normal calculator....................calc")
+print("SpeedDistanceTime.....................std")
 print("square root..........................root")
 print("power of............................power")
 print("quadratic............................quad")
@@ -239,9 +240,713 @@ def pythagoras():
 		tmp = (float(c)**2) - (float(a)**2)
 		tmp1 = (float(tmp)**0.5)
 		print("Value of b: ", tmp1)
-
 if choice =="pyth":
 	pythagoras()
+	
+def SpeedDistanceTime():	
+	print("""
+Speed Distance Time
+Speed KEY: kilometres per hour = kph
+           meters per second = mps
+           miles per hour = mph
+		
+Distance KEY: miles = mi
+              metres = m
+              kilometres = km
+		
+Time KEY: seconds = s
+	  minutes = m 
+	  hour = h 
+	  seconds:minutes:hours = #
+		
+USE: 75kph 25mps 100mph 200mi 400m 3km 30s 45m 12h 
+		
+FOR UNKNOWN VALUE USE "?" (?km or ?h)
+""")
+		
+	s = input("Distance(s): ")
+	v = input("Speed(v): ")
+	t = input("Time(t): ")
+	
+#distance
+	if v[-3:] == "kph" and t[-1:] == "h" and s == "?km":
+		v1 = v[:-3]
+		t1 = t[:-1]
+		s = float(v1) * float(t1)
+		print("Distance(s):",s,"km")
+	
+	if v[-3:] == "kph" and t[-1:] == "m" and s == "?km":
+		v1 = v[:-3]
+		t1 = t[:-1]
+		t2 = float(t1) / 60
+		s = float(v1) * float(t2)
+		print("Distance(s):",s,"km")
+	
+	if v[-3:] == "kph" and t[-1:] == "s" and s == "?km":
+		v1 = v[:-3]
+		t1 = t[:-1]
+		t2 = float(t1) / 3600
+		s = float(v1) * float(t2)
+		print("Distance(s):",s,"km")
+	
+	if v[-3:] == "mps" and t[-1:] == "s" and s == "?km":
+		v1 = v[:-3]
+		v1 = float(v1) * 3.6
+		t1 = t[:-1]
+		t2 = float(t1) / 3600
+		s = float(v1) * float(t2)
+		print("Distance(s):",s,"km")
+	
+	if v[-3:] == "mps" and t[-1:] == "h" and s == "?km":
+		v1 = v[:-3]
+		v1 = float(v1) * 3.6
+		t1 = t[:-1]
+		s = float(v1) * float(t1)
+		print("Distance(s):",s,"km")
+	
+	if v[-3:] == "mps" and t[-1:] == "m" and s == "?km":
+		v1 = v[:-3]
+		v1 = float(v1) * 3.6
+		t1 = t[:-1]
+		t1 = float(t1) / 60
+		s = float(v1) * float(t1)
+		print("Distance(s):",s,"km")
+	
+	if v[-3:] == "mph" and t[-1:] == "h" and s == "?km":
+		v1 = v[:-3]
+		v1 = float(v1) * 1.60934
+		t1 = t[:-1]
+		s = float(v1) * float(t1)
+		print("Distance(s):",s,"km")
+	
+	if v[-3:] == "mph" and t[-1:] == "m" and s == "?km":
+		v1 = v[:-3]
+		v1 = float(v1) * 1.60934
+		t1 = t[:-1]
+		t1 = float(t1) / 60
+		s = float(v1) * float(t1)
+		print("Distance(s):",s,"km")
+	
+	if v[-3:] == "mph" and t[-1:] == "s" and s == "?km":
+		v1 = v[:-3]
+		v1 = float(v1) * 1.60934
+		t1 = t[:-1]
+		t2 = float(t1) / 3600
+		s = float(v1) * float(t2)
+		print("Distance(s):",s,"km")
+	
+	if v[-3:] == "kph" and t[-1:] == "h" and s == "?m":
+		v1 = v[:-3]
+		t1 = t[:-1]
+		s = float(v1) * float(t1)
+		s = float(s) * 1000
+		print("Distance(s):",s,"m")
+	
+	if v[-3:] == "kph" and t[-1:] == "m" and s == "?m":
+		v1 = v[:-3]
+		t1 = t[:-1]
+		t2 = float(t1) / 60
+		s = float(v1) * float(t2)
+		s = float(s) * 1000
+		print("Distance(s):",s,"m")
+	
+	if v[-3:] == "kph" and t[-1:] == "s" and s == "?m":
+		v1 = v[:-3]
+		t1 = t[:-1]
+		t2 = float(t1) / 3600
+		s = float(v1) * float(t2)
+		s = float(s) * 1000
+		print("Distance(s):",s,"m")
+	
+	if v[-3:] == "mps" and t[-1:] == "s" and s == "?m":
+		v1 = v[:-3]
+		v1 = float(v1) * 3.6
+		t1 = t[:-1]
+		t2 = float(t1) / 3600
+		s = float(v1) * float(t2)
+		s = float(s) * 1000
+		print("Distance(s):",s,"m")
+	
+	if v[-3:] == "mps" and t[-1:] == "h" and s == "?m":
+		v1 = v[:-3]
+		v1 = float(v1) * 3.6
+		t1 = t[:-1]
+		s = float(v1) * float(t1)
+		s = float(s) * 1000
+		print("Distance(s):",s,"m")
+	
+	if v[-3:] == "mps" and t[-1:] == "m" and s == "?m":
+		v1 = v[:-3]
+		v1 = float(v1) * 3.6
+		t1 = t[:-1]
+		t1 = float(t1) / 60
+		s = float(v1) * float(t1)
+		s = float(s) * 1000
+		print("Distance(s):",s,"m")
+	
+	if v[-3:] == "mph" and t[-1:] == "h" and s == "?m":
+		v1 = v[:-3]
+		v1 = float(v1) * 1.60934
+		t1 = t[:-1]
+		s = float(v1) * float(t1)
+		s = float(s) * 1000
+		print("Distance(s):",s,"m")
+	
+	if v[-3:] == "mph" and t[-1:] == "m" and s == "?m":
+		v1 = v[:-3]
+		v1 = float(v1) * 1.60934
+		t1 = t[:-1]
+		t1 = float(t1) / 60
+		s = float(v1) * float(t1)
+		s = float(s) * 1000
+		print("Distance(s):",s,"m")
+	
+	if v[-3:] == "mph" and t[-1:] == "s" and s == "?m":
+		v1 = v[:-3]
+		v1 = float(v1) * 1.60934
+		t1 = t[:-1]
+		t2 = float(t1) / 3600
+		s = float(v1) * float(t2)
+		s = float(s) * 1000
+		print("Distance(s):",s,"m")
+		
+	if v[-3:] == "kph" and t[-1:] == "h" and s == "?mi":
+		v1 = v[:-3]
+		t1 = t[:-1]
+		s = float(v1) * float(t1)
+		s = float(s) / 1.60934
+		print("Distance(s):",s,"mi")
+	
+	if v[-3:] == "kph" and t[-1:] == "m" and s == "?mi":
+		v1 = v[:-3]
+		t1 = t[:-1]
+		t2 = float(t1) / 60
+		s = float(v1) * float(t2)
+		s = float(s) / 1.60934
+		print("Distance(s):",s,"mi")
+	
+	if v[-3:] == "kph" and t[-1:] == "s" and s == "?mi":
+		v1 = v[:-3]
+		t1 = t[:-1]
+		t2 = float(t1) / 3600
+		s = float(v1) * float(t2)
+		s = float(s) / 1.60934
+		print("Distance(s):",s,"mi")
+	
+	if v[-3:] == "mps" and t[-1:] == "s" and s == "?mi":
+		v1 = v[:-3]
+		v1 = float(v1) * 3.6
+		t1 = t[:-1]
+		t2 = float(t1) / 3600
+		s = float(v1) * float(t2)
+		s = float(s) / 1.60934
+		print("Distance(s):",s,"mi")
+	
+	if v[-3:] == "mps" and t[-1:] == "h" and s == "?mi":
+		v1 = v[:-3]
+		v1 = float(v1) * 3.6
+		t1 = t[:-1]
+		s = float(v1) * float(t1)
+		s = float(s) / 1.60934
+		print("Distance(s):",s,"mi")
+	
+	if v[-3:] == "mps" and t[-1:] == "m" and s == "?mi":
+		v1 = v[:-3]
+		v1 = float(v1) * 3.6
+		t1 = t[:-1]
+		t1 = float(t1) / 60
+		s = float(v1) * float(t1)
+		s = float(s) / 1.60934
+		print("Distance(s):",s,"mi")
+	
+	if v[-3:] == "mph" and t[-1:] == "h" and s == "?mi":
+		v1 = v[:-3]
+		v1 = float(v1) * 1.60934
+		t1 = t[:-1]
+		s = float(v1) * float(t1)
+		s = float(s) / 1.60934
+		print("Distance(s):",s,"mi")
+	
+	if v[-3:] == "mph" and t[-1:] == "m" and s == "?mi":
+		v1 = v[:-3]
+		v1 = float(v1) * 1.60934
+		t1 = t[:-1]
+		t1 = float(t1) / 60
+		s = float(v1) * float(t1)
+		s = float(s) / 1.60934
+		print("Distance(s):",s,"mi")
+	
+	if v[-3:] == "mph" and t[-1:] == "s" and s == "?mi":
+		v1 = v[:-3]
+		v1 = float(v1) * 1.60934
+		t1 = t[:-1]
+		t2 = float(t1) / 3600
+		s = float(v1) * float(t2)
+		s = float(s) / 1.60934
+		print("Distance(s):",s,"mi")
+	
+#speed
+	if v == "?kmph" and t[-1:] == "h" and s[-2:] == "km":
+		t1 = t[:-1]
+		s1 = s[:-2]
+		v1 = float(s1) / float(t1)
+		print("Speed(v):",v1,"kmph")
+	
+	if v == "?kmph" and t[-1:] == "m" and s[-2:] == "km":
+		t1 = t[:-1]
+		t1 = float(t1) / 60
+		s1 = s[:-2]
+		v1 = float(s1) / float(t1)
+		print("Speed(v):",v1,"kmph")
+	
+	if v == "?kmph" and t[-1:] == "s" and s[-2:] == "km":
+		t1 = t[:-1]
+		t1 = float(t1) / 3600
+		s1 = s[:-2]
+		v1 = float(s1) / float(t1)
+		print("Speed(v):",v1,"kmph")
+	
+	if v == "?kmph" and t[-1:] == "h" and s[-2:] == "m":
+		t1 = t[:-1]
+		s1 = s[:-2]
+		s1 = float(s1) / 1000
+		v1 = float(s1) / float(t1)
+		print("Speed(v):",v1,"kmph")
+	
+	if v == "?kmph" and t[-1:] == "m" and s[-2:] == "m":
+		t1 = t[:-1]
+		t1 = float(t1) / 60
+		s1 = s[:-2]
+		s1 = float(s1) / 1000
+		v1 = float(s1) / float(t1)
+		print("Speed(v):",v1,"kmph")
+	
+	if v == "?kmph" and t[-1:] == "s" and s[-2:] == "m":
+		t1 = t[:-1]
+		t1 = float(t1) / 3600
+		s1 = s[:-2]
+		s1 = float(s1) / 1000
+		v1 = float(s1) / float(t1)
+		print("Speed(v):",v1,"kmph")
+	
+	if v == "?kmph" and t[-1:] == "h" and s[-2:] == "mi":
+		t1 = t[:-1]
+		s1 = s[:-2]
+		s1 = float(s1) * 1.60934
+		v1 = float(s1) / float(t1)
+		print("Speed(v):",v1,"kmph")
+	
+	if v == "?kmph" and t[-1:] == "m" and s[-2:] == "mi":
+		t1 = t[:-1]
+		t1 = float(t1) / 60
+		s1 = s[:-2]
+		s1 = float(s1) * 1.60934
+		v1 = float(s1) / float(t1)
+		print("Speed(v):",v1,"kmph")
+	
+	if v == "?kmph" and t[-1:] == "s" and s[-2:] == "mi":
+		t1 = t[:-1]
+		t1 = float(t1) / 3600
+		s1 = s[:-2]
+		s1 = float(s1) * 1.60934
+		v1 = float(s1) / float(t1)
+		print("Speed(v):",v1,"kmph")
+	
+	if v == "?mph" and t[-1:] == "h" and s[-2:] == "km":
+		t1 = t[:-1]
+		s1 = s[:-2]
+		v1 = float(s1) / float(t1)
+		v1 = float(v1) / 1.60934
+		print("Speed(v):",v1,"mph")
+	
+	if v == "?mph" and t[-1:] == "m" and s[-2:] == "km":
+		t1 = t[:-1]
+		t1 = float(t1) / 60
+		s1 = s[:-2]
+		v1 = float(s1) / float(t1)
+		v1 = float(v1) / 1.60934
+		print("Speed(v):",v1,"mph")
+	
+	if v == "?mph" and t[-1:] == "s" and s[-2:] == "km":
+		t1 = t[:-1]
+		t1 = float(t1) / 3600
+		s1 = s[:-2]
+		v1 = float(s1) / float(t1)
+		v1 = float(v1) / 1.60934
+		print("Speed(v):",v1,"mph")
+	
+	if v == "?mph" and t[-1:] == "h" and s[-2:] == "m":
+		t1 = t[:-1]
+		s1 = s[:-2]
+		s1 = float(s1) / 1000
+		v1 = float(s1) / float(t1)
+		v1 = float(v1) / 1.60934
+		print("Speed(v):",v1,"mph")
+	
+	if v == "?mph" and t[-1:] == "m" and s[-2:] == "m":
+		t1 = t[:-1]
+		t1 = float(t1) / 60
+		s1 = s[:-2]
+		s1 = float(s1) / 1000
+		v1 = float(s1) / float(t1)
+		v1 = float(v1) / 1.60934
+		print("Speed(v):",v1,"mph")
+	
+	if v == "?mph" and t[-1:] == "s" and s[-2:] == "m":
+		t1 = t[:-1]
+		t1 = float(t1) / 3600
+		s1 = s[:-2]
+		s1 = float(s1) / 1000
+		v1 = float(s1) / float(t1)
+		v1 = float(v1) / 1.60934
+		print("Speed(v):",v1,"mph")
+	
+	if v == "?mph" and t[-1:] == "h" and s[-2:] == "mi":
+		t1 = t[:-1]
+		s1 = s[:-2]
+		s1 = float(s1) * 1.60934
+		v1 = float(s1) / float(t1)
+		v1 = float(v1) / 1.60934
+		print("Speed(v):",v1,"mph")
+	
+	if v == "?mph" and t[-1:] == "m" and s[-2:] == "mi":
+		t1 = t[:-1]
+		t1 = float(t1) / 60
+		s1 = s[:-2]
+		s1 = float(s1) * 1.60934
+		v1 = float(s1) / float(t1)
+		v1 = float(v1) / 1.60934
+		print("Speed(v):",v1,"mph")
+	
+	if v == "?mph" and t[-1:] == "s" and s[-2:] == "mi":
+		t1 = t[:-1]
+		t1 = float(t1) / 3600
+		s1 = s[:-2]
+		s1 = float(s1) * 1.60934
+		v1 = float(s1) / float(t1)
+		v1 = float(v1) / 1.60934
+		print("Speed(v):",v1,"mph")
+	
+	if v == "?mps" and t[-1:] == "h" and s[-2:] == "km":
+		t1 = t[:-1]
+		s1 = s[:-2]
+		v1 = float(s1) / float(t1)
+		v1 = float(v1) / 3.6
+		print("Speed(v):",v1,"mps")
+	
+	if v == "?mps" and t[-1:] == "m" and s[-2:] == "km":
+		t1 = t[:-1]
+		t1 = float(t1) / 60
+		s1 = s[:-2]
+		v1 = float(s1) / float(t1)
+		v1 = float(v1) / 3.6
+		print("Speed(v):",v1,"mps")
+	
+	if v == "?mps" and t[-1:] == "s" and s[-2:] == "km":
+		t1 = t[:-1]
+		t1 = float(t1) / 3600
+		s1 = s[:-2]
+		v1 = float(s1) / float(t1)
+		v1 = float(v1) / 3.6
+		print("Speed(v):",v1,"mps")
+	
+	if v == "?mps" and t[-1:] == "h" and s[-2:] == "m":
+		t1 = t[:-1]
+		s1 = s[:-2]
+		s1 = float(s1) / 1000
+		v1 = float(s1) / float(t1)
+		v1 = float(v1) / 3.6
+		print("Speed(v):",v1,"mps")
+	
+	if v == "?mps" and t[-1:] == "m" and s[-2:] == "m":
+		t1 = t[:-1]
+		t1 = float(t1) / 60
+		s1 = s[:-2]
+		s1 = float(s1) / 1000
+		v1 = float(s1) / float(t1)
+		v1 = float(v1) / 3.6
+		print("Speed(v):",v,"mps")
+	
+	if v == "?mps" and t[-1:] == "s" and s[-2:] == "m":
+		t1 = t[:-1]
+		t1 = float(t1) / 3600
+		s1 = s[:-2]
+		s1 = float(s1) / 1000
+		v1 = float(s1) / float(t1)
+		v1 = float(v1) / 3.6
+		print("Speed(v):",v1,"mps")
+	
+	if v == "?mps" and t[-1:] == "h" and s[-2:] == "mi":
+		t1 = t[:-1]
+		s1 = s[:-2]
+		s1 = float(s1) * 1.60934
+		v1 = float(s1) / float(t1)
+		v1 = float(v1) / 3.6
+		print("Speed(v):",v1,"mps")
+	
+	if v == "?mps" and t[-1:] == "m" and s[-2:] == "mi":
+		t1 = t[:-1]
+		t1 = float(t1) / 60
+		s1 = s[:-2]
+		s1 = float(s1) * 1.60934
+		v1 = float(s1) / float(t1)
+		v1 = float(v1) / 3.6
+		print("Speed(v):",v1,"mps")
+	
+	if v == "?mps" and t[-1:] == "s" and s[-2:] == "mi":
+		t1 = t[:-1]
+		t1 = float(t1) / 3600
+		s1 = s[:-2]
+		s1 = float(s1) * 1.60934
+		v1 = float(s1) / float(t1)
+		v1 = float(v1) / 3.6
+		print("Speed(v):",v1,"mps")
+	
+#time
+	if v[-3:] == "kph" and t == "?h" and s[-2:] == "km":
+		print("test")
+		v1 = v[:-3]
+		s1 = s[:-2]
+		t = float(s1) / float(v1)
+		print("Time(t):",t,"h")
+	
+	if v[-3:] == "kph" and t == "?h" and s[-2:] == "m":
+		print("test")
+		v1 = v[:-3]
+		s1 = s[:-2]
+		s1 = float(s1) / 1000
+		t = float(s1) / float(v1)
+		print("Time(t):",t,"h")
+	
+	if v[-3:] == "kph" and t == "?h" and s[-2:] == "mi":
+		print("test")
+		v1 = v[:-3]
+		s1 = s[:-2]
+		s1 = float(s1) * 1.60934
+		t = float(s1) / float(v1)
+		print("Time(t):",t,"h")
+	
+	if v[-3:] == "mph" and t == "?h" and s[-2:] == "km":
+		print("test")
+		v1 = v[:-3]
+		v1 = float(v1) * 1.60934
+		s1 = s[:-2]
+		t = float(s1) / float(v1)
+		print("Time(t):",t,"h")
+	
+	if v[-3:] == "mph" and t == "?h" and s[-2:] == "m":
+		print("test")
+		v1 = v[:-3]
+		v1 = float(v1) * 1.60934
+		s1 = s[:-2]
+		s1 = float(s1) / 1000
+		t = float(s1) / float(v1)
+		print("Time(t):",t,"h")
+	
+	if v[-3:] == "mph" and t == "?h" and s[-2:] == "mi":
+		print("test")
+		v1 = v[:-3]
+		v1 = float(v1) * 1.60934
+		s1 = s[:-2]
+		s1 = float(s1) * 1.60934
+		t = float(s1) / float(v1)
+		print("Time(t):",t,"h")
+	
+	if v[-3:] == "mps" and t == "?h" and s[-2:] == "km":
+		print("test")
+		v1 = v[:-3]
+		v1 = float(v1) * 3.6
+		s1 = s[:-2]
+		t = float(s1) / float(v1)
+		print("Time(t):",t,"h")
+	
+	if v[-3:] == "mps" and t == "?h" and s[-2:] == "m":
+		print("test")
+		v1 = v[:-3]
+		v1 = float(v1) * 3.6
+		s1 = s[:-2]
+		s1 = float(s1) / 1000
+		t = float(s1) / float(v1)
+		print("Time(t):",t,"h")
+	
+	if v[-3:] == "mps" and t == "?h" and s[-2:] == "mi":
+		print("test")
+		v1 = v[:-3]
+		v1 = float(v1) * 3.6
+		s1 = s[:-2]
+		s1 = float(s1) * 1.60934
+		t = float(s1) / float(v1)
+		print("Time(t):",t,"h")
+	
+	if v[-3:] == "mps" and t == "?m" and s[-2:] == "km":
+		print("test")
+		v1 = v[:-3]
+		v1 = float(v1) * 3.6
+		s1 = s[:-2]
+		t1 = float(s1) / float(v1)
+		t1 = float(t1) * 60
+		print("Time(t):",t1,"m")
+	
+	if v[-3:] == "mps" and t == "?m" and s[-2:] == "m":
+		print("test")
+		v1 = v[:-3]
+		v1 = float(v1) * 3.6
+		s1 = s[:-2]
+		s1 = float(s1) / 1000
+		t1 = float(s1) / float(v1)
+		t1 = float(t1) * 60
+		print("Time(t):",t,"m")
+	
+	if v[-3:] == "mps" and t == "?m" and s[-2:] == "mi":
+		print("test")
+		v1 = v[:-3]
+		v1 = float(v1) * 3.6
+		s1 = s[:-2]
+		s1 = float(s1) * 1.60934
+		t1 = float(s1) / float(v1)
+		t1 = float(t1) * 60
+		print("Time(t):",t1,"m")
+	
+	if v[-3:] == "mps" and t == "?s" and s[-2:] == "km":
+		print("test")
+		v1 = v[:-3]
+		v1 = float(v1) * 3.6
+		s1 = s[:-2]
+		t1 = float(s1) / float(v1)
+		t1 = float(t1) * 3600
+		print("Time(t):",t1,"s")
+	
+	if v[-3:] == "mps" and t == "?s" and s[-2:] == "m":
+		print("test")
+		v1 = v[:-3]
+		v1 = float(v1) * 3.6
+		s1 = s[:-2]
+		s1 = float(s1) / 1000
+		t1 = float(s1) / float(v1)
+		t1 = float(t1) * 3600
+		print("Time(t):",t,"s")
+	
+	if v[-3:] == "mps" and t == "?s" and s[-2:] == "mi":
+		print("test")
+		v1 = v[:-3]
+		v1 = float(v1) * 3.6
+		s1 = s[:-2]
+		s1 = float(s1) * 1.60934
+		t1 = float(s1) / float(v1)
+		t1 = float(t1) * 3600
+		print("Time(t):",t1,"s")
+		
+	if v[-3:] == "kph" and t == "?m" and s[-2:] == "km":
+		print("test")
+		v1 = v[:-3]
+		s1 = s[:-2]
+		t1 = float(s1) / float(v1)
+		t1 = float(t1) * 60
+		print("Time(t):",t1,"m")
+	
+	if v[-3:] == "kph" and t == "?m" and s[-2:] == "m":
+		print("test")
+		v1 = v[:-3]
+		s1 = s[:-2]
+		s1 = float(s1) / 1000
+		t1 = float(s1) / float(v1)
+		t1 = float(t1) * 60
+		print("Time(t):",t1,"m")
+	
+	if v[-3:] == "kph" and t == "?m" and s[-2:] == "mi":
+		print("test")
+		v1 = v[:-3]
+		s1 = s[:-2]
+		s1 = float(s1) * 1.60934
+		t1 = float(s1) / float(v1)
+		t1 = float(t1) * 60
+		print("Time(t):",t1,"m")
+	
+	if v[-3:] == "mph" and t == "?m" and s[-2:] == "km":
+		print("test")
+		v1 = v[:-3]
+		v1 = float(v1) * 1.60934
+		s1 = s[:-2]
+		t1 = float(s1) / float(v1)
+		t1 = float(t1) * 60
+		print("Time(t):",t1,"m")
+	
+	if v[-3:] == "mph" and t == "?m" and s[-2:] == "m":
+		print("test")
+		v1 = v[:-3]
+		v1 = float(v1) * 1.60934
+		s1 = s[:-2]
+		s1 = float(s1) / 1000
+		t1 = float(s1) / float(v1)
+		t1 = float(t1) * 60
+		print("Time(t):",t1,"m")
+	
+	if v[-3:] == "mph" and t == "?m" and s[-2:] == "mi":
+		print("test")
+		v1 = v[:-3]
+		v1 = float(v1) * 1.60934
+		s1 = s[:-2]
+		s1 = float(s1) * 1.60934
+		t1 = float(s1) / float(v1)
+		t1 = float(t1) * 60
+		print("Time(t):",t1,"m")
+	
+	if v[-3:] == "kph" and t == "?s" and s[-2:] == "km":
+		print("test")
+		v1 = v[:-3]
+		s1 = s[:-2]
+		t1 = float(s1) / float(v1)
+		t1 = float(t1) * 3600
+		print("Time(t):",t1,"s")
+	
+	if v[-3:] == "kph" and t == "?s" and s[-2:] == "m":
+		print("test")
+		v1 = v[:-3]
+		s1 = s[:-2]
+		s1 = float(s1) / 1000
+		t1 = float(s1) / float(v1)
+		t1 = float(t1) * 3060
+		print("Time(t):",t1,"s")
+	
+	if v[-3:] == "kph" and t == "?s" and s[-2:] == "mi":
+		print("test")
+		v1 = v[:-3]
+		s1 = s[:-2]
+		s1 = float(s1) * 1.60934
+		t1 = float(s1) / float(v1)
+		t1 = foat(t1) * 3600
+		print("Time(t):",t1,"s")
+	
+	if v[-3:] == "mph" and t == "?s" and s[-2:] == "km":
+		print("test")
+		v1 = v[:-3]
+		v1 = float(v1) * 1.60934
+		s1 = s[:-2]
+		t1 = float(s1) / float(v1)
+		t1 = foat(t1) * 3600
+		print("Time(t):",t1,"s")
+	
+	if v[-3:] == "mph" and t == "?s" and s[-2:] == "m":
+		print("test")
+		v1 = v[:-3]
+		v1 = float(v1) * 1.60934
+		s1 = s[:-2]
+		s1 = float(s1) / 1000
+		t1 = float(s1) / float(v1)
+		t1 = foat(t1) * 3600
+		print("Time(t):",t1,"s")
+	
+	if v[-3:] == "mph" and t == "?s" and s[-2:] == "mi":
+		print("test")
+		v1 = v[:-3]
+		v1 = float(v1) * 1.60934
+		s1 = s[:-2]
+		s1 = float(s1) * 1.60934
+		t1 = float(s1) / float(v1)
+		t1 = foat(t1) * 3600
+		print("Time(t):",t1,"s")
+if choice == "std":
+		SpeedDistanceTime()
 	
 
 
@@ -256,5 +961,4 @@ if resume == "n":
 	sys.exit()
 elif resume == "y":
 	os.execl(sys.executable, sys.executable, *sys.argv)
-
 
