@@ -194,26 +194,26 @@ if choice == "root":
 
 
 def quadratic():
-	a = float(input("a: "))
-	b = float(input("b: "))
-	c = float(input("c: "))
-
-	b1 = -float(b)
+	a = input("a: ")
+	b = input("b: ")
+	c = input("c: ")
 
 
-	bsqr = b ** 2
-	sqrt = bsqr - 4 * a * c
-	sqrt1 = sqrt ** 0.5
+	b1 = float(b) - float(b) - float(b)
+
+	bsqr = float(b) ** 2
+	sqrt = float(bsqr) - 4 * float(a) * float(c)
+	sqrt1 = float(sqrt) ** 0.5
 
 
-	x1 = -b + sqrt1
-	x2 = 2 * a
+	x1 = complex(b1) + complex(sqrt1)
+	x2 = 2 * float(a)
 
-	x3 = -b - sqrt1
-	x4 = 2 * a
+	x3 = complex(b1) - complex(sqrt1)
+	x4 = 2 * float(a)
 
-	x_p = float(x1) / float(x2)
-	x_n = float(x3) / float(x4)
+	x_p = complex(x1) / complex(x2)
+	x_n = complex(x3) / complex(x4)
 
 
 	print("X = ",x_p)
