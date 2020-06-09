@@ -15,6 +15,7 @@ print("square root..........................root")
 print("power of............................power")
 print("quadratic............................quad")
 print("pythagoras...........................pyth")
+print("fibonacci sequence...................fibo")
 print("denary -> binary..................den2bin")
 print("binary -> denary..................bin2den")
 print("denary -> hexadecimal.............den2hex")
@@ -35,6 +36,30 @@ print("="*45)
 choice = input("which command do you want to use?: ")
 
 print("="*45)
+
+def fibonacci():
+	series = [0, 1]
+	length = int(input("how far into the fibonacci sequence do you want to go?: "))
+
+	if length == 1:
+		print("[0]")
+	if length == 2:
+		print("[0, 1]")
+
+	length = int(length) - 2
+	
+	while length >= 1:	
+		for i in range (length):
+			tmp = series[i] + series[i+1]
+			series.append(tmp)
+		choose = input("print all numbers in sequence or the just the number chosen? [all/chosen]:") 
+		if choose == "all":
+			print(series)
+		if choose == "chosen":
+			print (series[-1])
+		break
+if choice == "fibo":
+	fibonacci()
 
 def den2bin():
 	denary = int(input("please input a denary number: "))	
