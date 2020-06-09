@@ -3,39 +3,87 @@
 import sys
 import os
 import math
+import collections
+
+print("""
+######################################################################################
+######################## THE ULTIMATE CALCULATOR #####################################
+###################################################################################### 
+
+CALCULATIONS:				  CONVERSIONS:
+________________________________________   ___________________________________________
+|normal calculator           |  calc   |  |denary -> binary           |    den2bin   |
+|SpeedDistanceTime           |  std    |  |binary -> denary           |    bin2den   |
+|square root                 |  root   |  |denary -> hexadecimal      |    den2hex   |
+|power of                    |  power  |  |hexadecimal -> denary      |    hex2den   |
+|quadratic                   |  quad   |  |binary -> hexadecimal      |    bin2hex   |
+|pythagoras                  |  pyth   |  |hexadecimal -> binary      |    hex2bin   |
+|fibonacci sequence          |  fibo   |  |centimetres -> inches      |    cm2inch   |
+|Mean, Mode, Median, Range   |  mmm    |  |inches -> centimetres      |    inch2cm   |
+''''''''''''''''''''''''''''''''''''''''  |miles -> kilometres        |    mile2km   |
+                                          |kilometres -> miles        |    km2mile   |
+                                          |feet -> metres             |    feet2m    |
+					  |metres -> feet             |    m2feet    |
+                                          |feet and inches -> metres  |  feetinch2m  |
+                                          ''''''''''''''''''''''''''''''''''''''''''''
+Choose a calculation or conversion by entering one of the commands
+""")
 
 
-print("ULTIMATE CALCULATOR!")
-print("="*45)
-print("OPTIONS..........................COMMANDS")
-print("~"*45)
-print("normal calculator....................calc")
-print("SpeedDistanceTime.....................std")
-print("square root..........................root")
-print("power of............................power")
-print("quadratic............................quad")
-print("pythagoras...........................pyth")
-print("fibonacci sequence...................fibo")
-print("denary -> binary..................den2bin")
-print("binary -> denary..................bin2den")
-print("denary -> hexadecimal.............den2hex")
-print("hexadecimal -> denary.............hex2den")
-print("binary -> hexadecimal.............bin2hex")
-print("hexadecimal -> binary.............hex2bin")
-print("centimetres -> inches.............cm2inch")
-print("inches -> centimetres.............inch2cm")
-print("miles -> kilometres...............mile2km")
-print("kilometres -> miles...............km2mile")
-print("feet -> metres.....................feet2m")
-print("metres -> feet.....................m2feet")
-print("feet and inches -> metres......feetinch2m")
+choice = input("#>")
+
+print("="*60)
 
 
-print("="*45)
 
-choice = input("which command do you want to use?: ")
-
-print("="*45)
+def MeanModeMedian():
+	
+	
+	nums = input("input all numbers with a space inbetween each of them: ")
+	print("="*60)
+	numbers = nums.split()
+	numbers = [int(i) for i in numbers]
+	len1 = len(numbers)
+	total = 0
+	mode = 0
+	
+	numbers.sort()
+	print("Numbers: ", numbers)
+	for i in range (len1):
+		total += int(numbers[i])
+		mean = float(total) / len1
+	print("Mean:",mean)
+	
+	
+				
+	data = collections.Counter(numbers)
+	data_list = dict(data)
+	max_value = max(list(data.values()))
+	mode_val = [num1 for num1, freq in data_list.items() if freq == max_value]
+	if len(mode_val) == len(numbers):
+   		print("Mode: No mode")
+	else:
+   		print("Mode: " + ', '.join(map(str, mode_val)))
+   	
+	
+	if len(numbers) % 2 == 0:
+   		first_median = numbers[len(numbers) // 2]
+   		second_median = numbers[len(numbers) // 2 - 1]
+   		median = (first_median + second_median) / 2
+	else:
+		median = numbers[len(numbers) // 2]
+	print("Median:",median)
+	
+	ran = int(numbers[-1]) - int(numbers[0])
+	print("Range:",ran)
+	print("Sum:",total)
+	print("Count:",len(numbers))
+				
+				
+		
+	
+if choice == "mmm":
+	MeanModeMedian()
 
 def fibonacci():
 	series = [0, 1]
@@ -115,7 +163,7 @@ if choice == "hex2bin":
 def calculator():
 	print("REMEMBER * = times and / = divide")	
 	print("your format should look like this: 1 + 1")	
-	Input = input("input your calcutions REMEMBER * = times and / = divide: ")
+	Input = input("input your calcution: ")
 	tmp = Input.split()
 	tmp1 = (tmp[0])
 	tmp2 = (tmp[1])
@@ -977,12 +1025,12 @@ if choice == "std":
 
 
 
-print("="*45)
+print("="*60)
 
-resume = input("do you want to restart? [y/n]: ")
+resume = input("Go back to main menu? [y/n]: ")
 
 if resume == "n":
-	print("#"*45)	
+	print("#"*60)	
 	sys.exit()
 elif resume == "y":
 	os.execl(sys.executable, sys.executable, *sys.argv)
