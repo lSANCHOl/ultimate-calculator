@@ -20,8 +20,8 @@ ________________________________________   _____________________________________
 |pythagoras                  |  pyth   |  |hexadecimal -> binary      |    hex2bin   |
 |fibonacci sequence          |  fibo   |  |centimetres -> inches      |    cm2inch   |
 |Mean, Mode, Median, Range   |  mmm    |  |inches -> centimetres      |    inch2cm   |
-''''''''''''''''''''''''''''''''''''''''  |miles -> kilometres        |    mile2km   |
-                                          |kilometres -> miles        |    km2mile   |
+|Cosine & Sine rule	     |   cs    |  |miles -> kilometres        |    mile2km   |
+''''''''''''''''''''''''''''''''''''''''  |kilometres -> miles        |    km2mile   |
                                           |feet -> metres             |    feet2m    |
 					  |metres -> feet             |    m2feet    |
                                           |feet and inches -> metres  |  feetinch2m  |
@@ -33,6 +33,112 @@ Choose a calculation or conversion by entering one of the commands
 choice = input("#>")
 
 print("="*60)
+
+
+
+
+
+def SineCosRule():
+	pick = input("""
+Options:
+_____________________________
+Sine rule for sides    | ss |
+Sine rule for angles   | sa |
+Cosine rule for sides  | cs |
+Cosine rule for angles | ca |
+-----------------------------
+
+#> """)
+
+
+	#working
+	if pick == "ss":
+		print("""
+Instructions:
++ A is opposite the side you are working out
++ b is the given side
++ B is opposite b""")
+		print('\n')
+		b = float(input("b: "))
+		A = float(input("A: "))
+		B = float(input("B: "))
+		
+		rA = math.radians(A)
+		rB = math.radians(B)
+		sinea = math.sin(rA)
+		sineB = math.sin(rB)
+		tmp = sinea * float(b)
+		
+		x = tmp / sineB 
+		print(x)
+
+
+	#working
+	if pick == "sa":
+		print("""
+Instructions:
++ a is the given side
++ b is opposite the angle you are working out
++ A is the angle opposite a""")
+		print('\n')
+		a = float(input("a: "))
+		A = float(input("A: "))
+		b = float(input("b: "))
+		rA = math.radians(A)
+		sinA = math.sin(rA)
+		ba = b / a
+		tmp = sinA * ba
+		tmp1 = math.asin(tmp)
+		tmp2 = math.degrees(tmp1)
+		print(tmp2)
+
+
+
+	#working
+	if pick == "cs":
+		print("""
+Instructions:
++ C is the angle opposite the side you are working out
++ a and b are interchangeable sides""")
+		print('\n')
+		a = float(input("a: "))
+		b = float(input("b: "))
+		C = float(input("C: "))	
+		
+		a2b2 = (a ** 2) + ( b ** 2)
+		rC = math.radians(C)
+		cosC = math.cos(rC)
+		ab2cosC = (2 * a * b) * (cosC)
+		tmp = float(a2b2) - float(ab2cosC)
+		tmp1 = tmp ** 0.5
+		print(tmp1)
+		
+		
+		
+	#working
+	if pick == "ca":
+		print("""
+Instructions:
++ a is always opposite the angle you are working out
++ b and c are interchangeable""")
+		print('\n')
+		a = float(input("a: "))	
+		b = float(input("b: "))
+		c = float(input("c: "))
+		
+		a2 = float(a) ** 2
+		b2 = float(b) ** 2
+		c2 = float(c) ** 2
+		tmp1 = b2 + c2 - a2
+		tmp = 2 * float(b) * float(c)
+		cosA = tmp1 / tmp
+		ans = math.acos(cosA)
+		ans1 = math.degrees(ans)
+		print(ans1)
+		
+	
+if choice == "cs":
+	SineCosRule()	
 
 
 
@@ -1034,4 +1140,3 @@ if resume == "n":
 	sys.exit()
 elif resume == "y":
 	os.execl(sys.executable, sys.executable, *sys.argv)
-
