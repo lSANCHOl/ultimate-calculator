@@ -20,17 +20,23 @@ ________________________________________   _____________________________________
 |pythagoras                  |  pyth   |  |hexadecimal -> binary      |    hex2bin   |
 |fibonacci sequence          |  fibo   |  |centimetres -> inches      |    cm2inch   |
 |Mean, Mode, Median, Range   |  mmm    |  |inches -> centimetres      |    inch2cm   |
-|Cosine & Sine rule	     |   cs    |  |miles -> kilometres        |    mile2km   |
+|Cosine & Sine rule	     |  cosi   |  |miles -> kilometres        |    mile2km   |
 ''''''''''''''''''''''''''''''''''''''''  |kilometres -> miles        |    km2mile   |
                                           |feet -> metres             |    feet2m    |
 					  |metres -> feet             |    m2feet    |
                                           |feet and inches -> metres  |  feetinch2m  |
                                           ''''''''''''''''''''''''''''''''''''''''''''
 Choose a calculation or conversion by entering one of the commands
+Type 'help' anywhere to see instructions on modules
+Type 'exit' anywhere to return to here
+Type 'back' to go back within a module
 """)
 
 
-choice = input("#>")
+choice = input("Ultimate-Calculator#>")
+
+if choice == "exit":
+	sys.exit()
 
 print("="*60)
 
@@ -39,7 +45,11 @@ print("="*60)
 
 
 def SineCosRule():
-	pick = input("""
+	
+	pick = "f"
+	pick = input("Sin & Cos Rule#>")
+	if pick == "help":
+		pick = input("""
 Options:
 _____________________________
 Sine rule for sides    | ss |
@@ -47,98 +57,160 @@ Sine rule for angles   | sa |
 Cosine rule for sides  | cs |
 Cosine rule for angles | ca |
 -----------------------------
+[type 'exit' to go back]""")
 
-#> """)
-
+	if pick == "exit":
+		os.execl(sys.executable, sys.executable, *sys.argv)
+	
 
 	#working
-	if pick == "ss":
+	while pick == "ss":
 		print("""
-Instructions:
+Sine rule for sides Instructions:
 + A is opposite the side you are working out
 + b is the given side
-+ B is opposite b""")
++ B is opposite b
+[type 'exit' to go back]""")
 		print('\n')
-		b = float(input("b: "))
-		A = float(input("A: "))
-		B = float(input("B: "))
+		A = 0
+		b = 0
+		B = 0
+		A = input("A: ")
+		if str(A) == "exit":
+			break
+			SineCosRule()
+			
+		b = input("b: ")
+		if str(b) == "exit":
+			break
+			SineCosRule()
+		B = input("B: ")
+		if str(B) == "exit":
+			break
+			SineCosRule()		
+	
+		else:	
+			rA = math.radians(float(A))
+			rB = math.radians(float(B))
+			sinea = math.sin(rA)
+			sineB = math.sin(rB)
+			tmp = sinea * float(b)
+			
+			x = tmp / sineB 
+			print(x)
 		
-		rA = math.radians(A)
-		rB = math.radians(B)
-		sinea = math.sin(rA)
-		sineB = math.sin(rB)
-		tmp = sinea * float(b)
-		
-		x = tmp / sineB 
-		print(x)
 
 
 	#working
-	if pick == "sa":
+	while pick == "sa":
 		print("""
-Instructions:
+Sine rule for angles Instructions:
 + a is the given side
++ A is the angle opposite a
 + b is opposite the angle you are working out
-+ A is the angle opposite a""")
+[type 'exit' to go back]""")
+
 		print('\n')
+		a = 0
+		A = 0
+		b = 0
 		a = float(input("a: "))
+		if str(a) == "exit":
+			break
+			SineCosRule()
 		A = float(input("A: "))
+		if str(A) == "exit":
+			break
+			SineCosRule()
 		b = float(input("b: "))
-		rA = math.radians(A)
-		sinA = math.sin(rA)
-		ba = b / a
-		tmp = sinA * ba
-		tmp1 = math.asin(tmp)
-		tmp2 = math.degrees(tmp1)
-		print(tmp2)
+		if str(b) == "b":
+			break
+			SineCosRule()
+		else:	
+			rA = math.radians(float(A))
+			sinA = math.sin(rA)
+			ba = float(b) / float(a)
+			tmp = sinA * ba
+			tmp1 = math.asin(tmp)
+			tmp2 = math.degrees(tmp1)
+			print(tmp2)
 
 
 
 	#working
-	if pick == "cs":
+	while pick == "cs":
 		print("""
-Instructions:
+Cosine rule for sides Instructions:
++ a and b are interchangeable sides
 + C is the angle opposite the side you are working out
-+ a and b are interchangeable sides""")
+[type 'exit' to go back]""")
 		print('\n')
-		a = float(input("a: "))
-		b = float(input("b: "))
-		C = float(input("C: "))	
+		a = 0
+		b = 0
+		c = 0
+		a = input("a: ")
+		if str(a) == "exit":
+			break
+			SineCosRule()
+		b = input("b: ")
+		if str(b) == "exit":
+			break
+			SineCosRule()
+		C = input("C: ")	
+		if str(C) == "exit":
+			break
+			SineCosRule()
 		
-		a2b2 = (a ** 2) + ( b ** 2)
-		rC = math.radians(C)
-		cosC = math.cos(rC)
-		ab2cosC = (2 * a * b) * (cosC)
-		tmp = float(a2b2) - float(ab2cosC)
-		tmp1 = tmp ** 0.5
-		print(tmp1)
+		else:
+			a2b2 = (float(a) ** 2) + ( float(b) ** 2)
+			rC = math.radians(float(C))
+			cosC = math.cos(rC)
+			ab2cosC = (2 * float(a) * float(b)) * (cosC)
+			tmp = float(a2b2) - float(ab2cosC)
+			tmp1 = tmp ** 0.5
+			print(tmp1)
 		
 		
 		
 	#working
-	if pick == "ca":
+	while pick == "ca":
 		print("""
-Instructions:
+Cosine rule for angles Instructions:
 + a is always opposite the angle you are working out
-+ b and c are interchangeable""")
++ b and c are interchangeable
+[type 'exit' to go back]""")
 		print('\n')
-		a = float(input("a: "))	
-		b = float(input("b: "))
-		c = float(input("c: "))
-		
-		a2 = float(a) ** 2
-		b2 = float(b) ** 2
-		c2 = float(c) ** 2
-		tmp1 = b2 + c2 - a2
-		tmp = 2 * float(b) * float(c)
-		cosA = tmp1 / tmp
-		ans = math.acos(cosA)
-		ans1 = math.degrees(ans)
-		print(ans1)
+		a = 0
+		b = 0
+		c = 0
+		a = input("a: ")
+		if str(a) == "exit":
+			break
+			SineCosRule()	
+		b = input("b: ")
+		if str(b) == "exit":
+			break
+			SineCosRule()
+		c = input("c: ")
+		if str(c) == "exit":
+			break
+			SineCosRule()
+		else:
+			a2 = float(a) ** 2
+			b2 = float(b) ** 2
+			c2 = float(c) ** 2
+			tmp1 = b2 + c2 - a2
+			tmp = 2 * float(b) * float(c)
+			cosA = tmp1 / tmp
+			ans = math.acos(cosA)
+			ans1 = math.degrees(ans)
+			print(ans1)
 		
 	
-if choice == "cs":
-	SineCosRule()	
+if choice == "cosi":
+	run = True
+	while run == True:
+		SineCosRule()
 
 
 
@@ -146,6 +218,8 @@ def MeanModeMedian():
 	
 	
 	nums = input("input all numbers with a space inbetween each of them: ")
+	if nums == "exit":
+		os.execl(sys.executable, sys.executable, *sys.argv)
 	print("="*60)
 	numbers = nums.split()
 	numbers = [int(i) for i in numbers]
@@ -184,17 +258,21 @@ def MeanModeMedian():
 	print("Range:",ran)
 	print("Sum:",total)
 	print("Count:",len(numbers))
+	print("="*60)
 				
 				
 		
 	
 if choice == "mmm":
-	MeanModeMedian()
+	run = True
+	while run == True:
+		MeanModeMedian()
 
 def fibonacci():
 	series = [0, 1]
-	length = int(input("how far into the fibonacci sequence do you want to go?: "))
-
+	length = input("how far into the fibonacci sequence do you want to go?: ")
+	if length == "exit":
+		os.execl(sys.executable, sys.executable, *sys.argv)
 	if length == 1:
 		print("[0]")
 	if length == 2:
@@ -211,65 +289,108 @@ def fibonacci():
 			print(series)
 		if choose == "chosen":
 			print (series[-1])
+		if choose == "exit":
+			os.execl(sys.executable, sys.executable, *sys.argv)
+		if choose == "back":
+			fibonacci()
 		break
+	print("="*45)
 if choice == "fibo":
-	fibonacci()
+	run = True
+	while run == True:
+		fibonacci()
 
 def den2bin():
-	denary = int(input("please input a denary number: "))	
-	binary = bin(denary)
+	denary = input("please input a denary number: ")	
+	if denary == "exit":
+		os.execl(sys.executable, sys.executable, *sys.argv)
+	binary = bin(int(denary))
 	binary = str(binary)
 	print("="*45)	
 	print("Result: ",binary[2:])
+	print("="*45)	
 if choice == "den2bin":	
-	den2bin()
+	run = True
+	while run == True:
+		den2bin()
 	
 
 def bin2den():
-	binary = int(input("please input a binary number: "), 2)
+	binary = input("please input a binary number: ")
+	if binary == "exit":
+		os.execl(sys.executable, sys.executable, *sys.argv)
+	ans = int(binary, 2)
 	print("="*45)	
-	print("Result:",binary)
+	print("Result:",ans)
+	print("="*45)	
 if choice == "bin2den":	
-	bin2den()
+	run = True
+	while run == True:
+		bin2den()
 	
 
 def den2hex():
-	denary = int(input("please input a denary number: "))
-	hexadecimal = hex(denary)
+	denary = input("please input a denary number: ")
+	if denary == "exit":
+		os.execl(sys.executable, sys.executable, *sys.argv)
+	hexadecimal = hex(int(denary))
 	print("="*45)	
 	print("Result:",hexadecimal[2:])
+	print("="*45)	
 if choice == "den2hex":	
-	den2hex()
+	run = True
+	while run == True:
+		den2hex()
 	
 def hex2den():
 	hexinput = input("please input a hexadecimal number: ")
+	if hexinput == "exit":
+		os.execl(sys.executable, sys.executable, *sys.argv)
+		
 	hexadecimal = int(hexinput, 16)
 	print("="*45)	
 	print("Result:",hexadecimal)
+	print("="*45)	
 if choice == "hex2den":	
-	hex2den()
+	run = True
+	while run == True:
+		hex2den()
 	
 def bin2hex():
-	binary = int(input("please input a binary number: "), 2)
-	hexadecimal = hex(binary)
+	binary = input("please input a binary number: ")
+	if binary == "exit":
+		os.execl(sys.executable, sys.executable, *sys.argv)
+	binary1 = int(binary, 2)
+	hexadecimal = hex(binary1)
 	print("="*45)
 	print("Result:",hexadecimal[2:])
+	print("="*45)	
 if choice == "bin2hex":
-	bin2hex()
+	run = True
+	while run == True:
+		bin2hex()
 	
 def hex2bin():
 	hexinput = input("please input a hexidecimal number: ")
+	if hexinput == "exit":
+		os.execl(sys.executable, sys.executable, *sys.argv)
 	hexadecimal = int(hexinput, 16)
 	binary = bin(hexadecimal)
 	print("="*45)	
 	print("Result:",binary[2:])
+	print("="*45)	
 if choice == "hex2bin":	
-	hex2bin()
+	run = True
+	while run == True:
+		hex2bin()
 
 def calculator():
 	print("REMEMBER * = times and / = divide")	
 	print("your format should look like this: 1 + 1")	
 	Input = input("input your calcution: ")
+	if Input == "exit":
+		os.execl(sys.executable, sys.executable, *sys.argv)
+		
 	tmp = Input.split()
 	tmp1 = (tmp[0])
 	tmp2 = (tmp[1])
@@ -284,73 +405,113 @@ def calculator():
 		result = float(tmp1)*float(tmp3)
 	print("="*45)	
 	print(result)
+	print("="*45)
 if choice == "calc":
-	calculator()
+	run = True
+	while run == True:
+		calculator()
 
 def cm2inch():
-	inp = float(input("input the amount of centimetres: "))
-	result = inp / 2.54
+	inp = input("input the amount of centimetres: ")
+	if inp == "exit":	
+		os.execl(sys.executable, sys.executable, *sys.argv)
+	result = float(inp) / 2.54
 	print("="*45)	
 	print(result,"inches")
+	print("="*45)
 if choice == "cm2inch":
-	cm2inch()
+	run = True
+	while run == True:
+		cm2inch()
 
 def inch2cm():
-	inp = float(input("input the amount of inches: "))
-	result = inp * 2.54
+	inp = input("input the amount of inches: ")
+	if inp == "exit":	
+		os.execl(sys.executable, sys.executable, *sys.argv)
+	result = float(inp) * 2.54
 	print(45*"=")	
 	print(result,"cm")
+	print("="*45)
 if choice == "inch2cm":
-	inch2cm()
+	run = True
+	while run == True:
+		inch2cm()
 
 def mile2km():
-	inp = float(input("input the amount of miles: "))
-	result = inp * 1.609
+	inp = input("input the amount of miles: ")
+	if inp == "exit":	
+		os.execl(sys.executable, sys.executable, *sys.argv)
+	result = float(inp) * 1.609
 	print(45*"=")	
 	print(result,"km")
+	print("="*45)
 if choice == "mile2km":
-	mile2km()
+	run = True
+	while run == True:
+		mile2km()
 
 def km2mile():
-	inp = float(input("input the amount of kilometres: "))
-	result = inp / 1.609
+	inp = input("input the amount of kilometres: ")
+	if inp == "exit":	
+		os.execl(sys.executable, sys.executable, *sys.argv)
+	result = float(inp) / 1.609
 	print(45*"=")	
 	print(result,"miles")
+	print("="*45)
 if choice == "km2mile":
-	km2mile()
+	run = True
+	while run == True:
+		km2mile()
 
 def power():
 	print("the format shoud look like this 2 8")	
 	inp = input("please input here: ")
+	if inp == "exit":
+		os.execl(sys.executable, sys.executable, *sys.argv)
 	tmp = inp.split()
 	tmp1 = (tmp[0])
 	tmp2 = (tmp[1])
 	result = float(tmp1)**float(tmp2)
 	print(45*"=")	
 	print(result)
+	print("="*45)
 if choice == "power":
-	power()
+	run = True
+	while run == True:
+		power()
 
 def feet2m():
-	inp = float(input("please input amount of feet: "))
-	result = inp / 3.281
+	inp = input("please input amount of feet: ")
+	if inp == "exit":	
+		os.execl(sys.executable, sys.executable, *sys.argv)
+	result = float(inp) / 3.281
 	print("="*45)
 	print(result,"m")
+	print("="*45)
 if choice == "feet2m":
-	feet2m()
+	run = True
+	while run == True:
+		feet2m()
 
 def m2feet():
-	inp = float(input("please input amount of metres: "))
-	result = inp * 3.281
+	inp = input("please input amount of metres: ")
+	if inp == "exit":	
+		os.execl(sys.executable, sys.executable, *sys.argv)
+	result = float(inp) * 3.281
 	print("="*45)
 	print(result,"feet")
+	print("="*45)
 if choice == "m2feet":
-	m2feet()
+	run = True
+	while run == True:
+		m2feet()
 
 
 def feetinch2m():
 	print("the format is: feet inch")
 	inp = input("input feet and inches: ")
+	if inp == "exit":	
+		os.execl(sys.executable, sys.executable, *sys.argv)
 	tmp = inp.split()
 	feet = float(tmp[0])
 	inch = float(tmp[1])
@@ -360,22 +521,55 @@ def feetinch2m():
 	metres = imetres + fmetres
 	print("="*45)
 	print(metres,"m")
+	print("="*45)
 if choice == "feetinch2m":
-	feetinch2m()
+	run = True
+	while run == True:
+		feetinch2m()
 
 def root():
-	inp = float(input("input a number: "))
-	result = math.sqrt(inp)
+	inp = input("input a number: ")
+	if inp == "exit":
+		os.execl(sys.executable, sys.executable, *sys.argv)
+	result = math.sqrt(float(inp))
 	print(result)
 if choice == "root":
-	root()
+	run = True
+	while run == True:
+		root()
 	
 
 
 def quadratic():
 	a = input("a: ")
+	if a == "exit":
+		os.execl(sys.executable, sys.executable, *sys.argv)
 	b = input("b: ")
+	if b == "back":
+		a = input("a: ")
+		if a == "exit":
+			os.execl(sys.executable, sys.executable, *sys.argv)
+		b = input("b: ")
+	if b == "exit":
+		os.execl(sys.executable, sys.executable, *sys.argv)
 	c = input("c: ")
+	if c == "back":
+		b = input("b: ")
+		if b == "exit":
+				os.execl(sys.executable, sys.executable, *sys.argv)
+		if b == "back":
+			a = input("a: ")
+			if a == "exit":
+				os.execl(sys.executable, sys.executable, *sys.argv)
+			b = input("b: ")
+			if b == "exit":
+				os.execl(sys.executable, sys.executable, *sys.argv)
+		c = input("c: ")
+		if c == "back":
+			b = input("b: ")
+			c = input("c: ")	
+	if c == "exit":
+		os.execl(sys.executable, sys.executable, *sys.argv)
 
 
 	b1 = float(b) - float(b) - float(b)
@@ -397,15 +591,52 @@ def quadratic():
 
 	print("X = ",x_p)
 	print("-X = ",x_n)
+	print("="*45)
 if choice == "quad":
-	quadratic()
+	run = True 
+	while run == True:
+		quadratic()
 
 def pythagoras():
 	print("a^2 x b^2 = c^2")
 	print("for unkown value enter \"?\"")
 	a = input("Value of a: ")
+	if a == "exit":
+		os.execl(sys.executable, sys.executable, *sys.argv)
 	b = input("Value of b: ")
+	if b == "exit":
+		os.execl(sys.executable, sys.executable, *sys.argv)
+	if b == "back":
+		a = input("Value of a: ")
+		if a == "exit":
+			os.execl(sys.executable, sys.executable, *sys.argv)
+		b = input("Value of b: ")
+		if b == "exit":
+			os.execl(sys.executable, sys.executable, *sys.argv)
+			
 	c = input("Value of c: ")
+	if c == "exit":
+		os.execl(sys.executable, sys.executable, *sys.argv)
+	if c == "back":
+		b = input("Value of b: ")
+		if b == "exit":
+			os.execl(sys.executable, sys.executable, *sys.argv)
+		if b == "back":
+			a = input("Value of a: ")
+			if a == "exit":
+				os.execl(sys.executable, sys.executable, *sys.argv)
+			b = input("Value of b: ")
+			if b == "exit":
+				os.execl(sys.executable, sys.executable, *sys.argv)
+			
+				
+		c = input("Value of c: ")
+		if c == "exit":
+			os.execl(sys.executable, sys.executable, *sys.argv)
+				
+	
+		
+		
 	
 	if c == "?":
 		tmp = (float(a)**2) + (float(b)**2)
@@ -419,34 +650,32 @@ def pythagoras():
 		tmp = (float(c)**2) - (float(a)**2)
 		tmp1 = (float(tmp)**0.5)
 		print("Value of b: ", tmp1)
+	print("="*45)
 if choice =="pyth":
-	pythagoras()
+	run = True
+	while run == True:
+		pythagoras()
 	
 def SpeedDistanceTime():	
-	print("""
-Speed Distance Time
-Speed KEY: kilometres per hour = kph
-           meters per second = mps
-           miles per hour = mph
-		
-Distance KEY: miles = mi
-              metres = m
-              kilometres = km
-		
-Time KEY: seconds = s
-	  minutes = m 
-	  hour = h 
-	  seconds:minutes:hours = #
-		
-USE: 75kph 25mps 100mph 200mi 400m 3km 30s 45m 12h 
-		
-FOR UNKNOWN VALUE USE "?" (?km or ?h)
-""")
+	
 		
 	s = input("Distance(s): ")
+	if s == "exit":
+		os.execl(sys.executable, sys.executable, *sys.argv)
 	v = input("Speed(v): ")
+	if v == "exit":
+		os.execl(sys.executable, sys.executable, *sys.argv)
+	if v == "back":
+		s = input("Distance(s): ")
+		v = input("Speed(v): ")
 	t = input("Time(t): ")
+	if t == "exit":
+		os.execl(sys.executable, sys.executable, *sys.argv)
 	
+	if t == "back":
+		v = input("Speed(v): ")
+		t = input("Time(t): ")
+	print("Distance:",s,"  Speed:",v, "  Time:",t)
 #distance
 	if v[-3:] == "kph" and t[-1:] == "h" and s == "?km":
 		v1 = v[:-3]
@@ -883,14 +1112,12 @@ FOR UNKNOWN VALUE USE "?" (?km or ?h)
 	
 #time
 	if v[-3:] == "kph" and t == "?h" and s[-2:] == "km":
-		print("test")
 		v1 = v[:-3]
 		s1 = s[:-2]
 		t = float(s1) / float(v1)
 		print("Time(t):",t,"h")
 	
 	if v[-3:] == "kph" and t == "?h" and s[-2:] == "m":
-		print("test")
 		v1 = v[:-3]
 		s1 = s[:-2]
 		s1 = float(s1) / 1000
@@ -898,7 +1125,6 @@ FOR UNKNOWN VALUE USE "?" (?km or ?h)
 		print("Time(t):",t,"h")
 	
 	if v[-3:] == "kph" and t == "?h" and s[-2:] == "mi":
-		print("test")
 		v1 = v[:-3]
 		s1 = s[:-2]
 		s1 = float(s1) * 1.60934
@@ -906,7 +1132,6 @@ FOR UNKNOWN VALUE USE "?" (?km or ?h)
 		print("Time(t):",t,"h")
 	
 	if v[-3:] == "mph" and t == "?h" and s[-2:] == "km":
-		print("test")
 		v1 = v[:-3]
 		v1 = float(v1) * 1.60934
 		s1 = s[:-2]
@@ -914,7 +1139,6 @@ FOR UNKNOWN VALUE USE "?" (?km or ?h)
 		print("Time(t):",t,"h")
 	
 	if v[-3:] == "mph" and t == "?h" and s[-2:] == "m":
-		print("test")
 		v1 = v[:-3]
 		v1 = float(v1) * 1.60934
 		s1 = s[:-2]
@@ -923,7 +1147,6 @@ FOR UNKNOWN VALUE USE "?" (?km or ?h)
 		print("Time(t):",t,"h")
 	
 	if v[-3:] == "mph" and t == "?h" and s[-2:] == "mi":
-		print("test")
 		v1 = v[:-3]
 		v1 = float(v1) * 1.60934
 		s1 = s[:-2]
@@ -932,7 +1155,6 @@ FOR UNKNOWN VALUE USE "?" (?km or ?h)
 		print("Time(t):",t,"h")
 	
 	if v[-3:] == "mps" and t == "?h" and s[-2:] == "km":
-		print("test")
 		v1 = v[:-3]
 		v1 = float(v1) * 3.6
 		s1 = s[:-2]
@@ -940,7 +1162,6 @@ FOR UNKNOWN VALUE USE "?" (?km or ?h)
 		print("Time(t):",t,"h")
 	
 	if v[-3:] == "mps" and t == "?h" and s[-2:] == "m":
-		print("test")
 		v1 = v[:-3]
 		v1 = float(v1) * 3.6
 		s1 = s[:-2]
@@ -949,7 +1170,6 @@ FOR UNKNOWN VALUE USE "?" (?km or ?h)
 		print("Time(t):",t,"h")
 	
 	if v[-3:] == "mps" and t == "?h" and s[-2:] == "mi":
-		print("test")
 		v1 = v[:-3]
 		v1 = float(v1) * 3.6
 		s1 = s[:-2]
@@ -958,7 +1178,6 @@ FOR UNKNOWN VALUE USE "?" (?km or ?h)
 		print("Time(t):",t,"h")
 	
 	if v[-3:] == "mps" and t == "?m" and s[-2:] == "km":
-		print("test")
 		v1 = v[:-3]
 		v1 = float(v1) * 3.6
 		s1 = s[:-2]
@@ -996,7 +1215,6 @@ FOR UNKNOWN VALUE USE "?" (?km or ?h)
 		print("Time(t):",t1,"s")
 	
 	if v[-3:] == "mps" and t == "?s" and s[-2:] == "m":
-		print("test")
 		v1 = v[:-3]
 		v1 = float(v1) * 3.6
 		s1 = s[:-2]
@@ -1006,7 +1224,6 @@ FOR UNKNOWN VALUE USE "?" (?km or ?h)
 		print("Time(t):",t,"s")
 	
 	if v[-3:] == "mps" and t == "?s" and s[-2:] == "mi":
-		print("test")
 		v1 = v[:-3]
 		v1 = float(v1) * 3.6
 		s1 = s[:-2]
@@ -1016,7 +1233,6 @@ FOR UNKNOWN VALUE USE "?" (?km or ?h)
 		print("Time(t):",t1,"s")
 		
 	if v[-3:] == "kph" and t == "?m" and s[-2:] == "km":
-		print("test")
 		v1 = v[:-3]
 		s1 = s[:-2]
 		t1 = float(s1) / float(v1)
@@ -1024,7 +1240,6 @@ FOR UNKNOWN VALUE USE "?" (?km or ?h)
 		print("Time(t):",t1,"m")
 	
 	if v[-3:] == "kph" and t == "?m" and s[-2:] == "m":
-		print("test")
 		v1 = v[:-3]
 		s1 = s[:-2]
 		s1 = float(s1) / 1000
@@ -1033,7 +1248,6 @@ FOR UNKNOWN VALUE USE "?" (?km or ?h)
 		print("Time(t):",t1,"m")
 	
 	if v[-3:] == "kph" and t == "?m" and s[-2:] == "mi":
-		print("test")
 		v1 = v[:-3]
 		s1 = s[:-2]
 		s1 = float(s1) * 1.60934
@@ -1042,7 +1256,6 @@ FOR UNKNOWN VALUE USE "?" (?km or ?h)
 		print("Time(t):",t1,"m")
 	
 	if v[-3:] == "mph" and t == "?m" and s[-2:] == "km":
-		print("test")
 		v1 = v[:-3]
 		v1 = float(v1) * 1.60934
 		s1 = s[:-2]
@@ -1051,7 +1264,6 @@ FOR UNKNOWN VALUE USE "?" (?km or ?h)
 		print("Time(t):",t1,"m")
 	
 	if v[-3:] == "mph" and t == "?m" and s[-2:] == "m":
-		print("test")
 		v1 = v[:-3]
 		v1 = float(v1) * 1.60934
 		s1 = s[:-2]
@@ -1061,7 +1273,6 @@ FOR UNKNOWN VALUE USE "?" (?km or ?h)
 		print("Time(t):",t1,"m")
 	
 	if v[-3:] == "mph" and t == "?m" and s[-2:] == "mi":
-		print("test")
 		v1 = v[:-3]
 		v1 = float(v1) * 1.60934
 		s1 = s[:-2]
@@ -1071,7 +1282,6 @@ FOR UNKNOWN VALUE USE "?" (?km or ?h)
 		print("Time(t):",t1,"m")
 	
 	if v[-3:] == "kph" and t == "?s" and s[-2:] == "km":
-		print("test")
 		v1 = v[:-3]
 		s1 = s[:-2]
 		t1 = float(s1) / float(v1)
@@ -1079,7 +1289,6 @@ FOR UNKNOWN VALUE USE "?" (?km or ?h)
 		print("Time(t):",t1,"s")
 	
 	if v[-3:] == "kph" and t == "?s" and s[-2:] == "m":
-		print("test")
 		v1 = v[:-3]
 		s1 = s[:-2]
 		s1 = float(s1) / 1000
@@ -1093,38 +1302,59 @@ FOR UNKNOWN VALUE USE "?" (?km or ?h)
 		s1 = s[:-2]
 		s1 = float(s1) * 1.60934
 		t1 = float(s1) / float(v1)
-		t1 = foat(t1) * 3600
+		t1 = float(t1) * 3600
 		print("Time(t):",t1,"s")
 	
 	if v[-3:] == "mph" and t == "?s" and s[-2:] == "km":
-		print("test")
 		v1 = v[:-3]
 		v1 = float(v1) * 1.60934
 		s1 = s[:-2]
 		t1 = float(s1) / float(v1)
-		t1 = foat(t1) * 3600
+		t1 = float(t1) * 3600
 		print("Time(t):",t1,"s")
 	
 	if v[-3:] == "mph" and t == "?s" and s[-2:] == "m":
-		print("test")
 		v1 = v[:-3]
 		v1 = float(v1) * 1.60934
 		s1 = s[:-2]
 		s1 = float(s1) / 1000
 		t1 = float(s1) / float(v1)
-		t1 = foat(t1) * 3600
+		t1 = float(t1) * 3600
 		print("Time(t):",t1,"s")
 	
 	if v[-3:] == "mph" and t == "?s" and s[-2:] == "mi":
-		print("test")
 		v1 = v[:-3]
 		v1 = float(v1) * 1.60934
 		s1 = s[:-2]
 		s1 = float(s1) * 1.60934
 		t1 = float(s1) / float(v1)
-		t1 = foat(t1) * 3600
+		t1 = float(t1) * 3600
 		print("Time(t):",t1,"s")
+	print("="*45)
 if choice == "std":
+	print("""
+Speed Distance Time
+Speed KEY: kilometres per hour = kph
+           meters per second = mps
+           miles per hour = mph
+		
+Distance KEY: miles = mi
+              metres = m
+              kilometres = km
+		
+Time KEY: seconds = s
+	  minutes = m 
+	  hour = h 
+	  seconds:minutes:hours = #
+		
+USE: 75kph 25mps 100mph 200mi 400m 3km 30s 45m 12h 
+		
+FOR UNKNOWN VALUE USE "?" (?km or ?h)
+Type 'exit' to exit or 'back' to go back one
+""")
+	run = True
+	while run == True:
+		
 		SpeedDistanceTime()
 	
 
